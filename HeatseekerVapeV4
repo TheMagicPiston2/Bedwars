@@ -1,0 +1,30 @@
+runcode(function()
+    local HeatseekerSpeed = {["Enabled"] = false}
+    HeatseekerSpeed = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+        ["Name"] = "Heatseeker",
+        ["HoverText"] = "Turn Off Vape Speed",
+        ["Function"] = function(v)
+	speedlol = v
+        if speedlol then
+	task.wait(2.4)
+	spawn(function()           
+	repeat
+        if (not speedlol and not onground) then return end
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
+        createwarning("Pistonware", "boost", 10.7)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 80
+	task.wait(0.07)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
+	task.wait(1)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 55
+	task.wait(0.05)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
+	task.wait(10)
+        until (not speedlol) 
+            end)
+        else
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
+      	end
+      end
+    })
+    end)
