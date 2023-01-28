@@ -1,0 +1,20 @@
+runcode(function()
+local PurpleAntivoid = {["Enabled"] = false}
+PurpleAntivoid = GuiLibrary["ObjectsThatCanBeSaved"]["UtilityWindow"]["Api"].CreateOptionsButton({
+        ["Name"] = "Purple Antivoid",
+        ["HoverText"] = "Purple Antivoid",
+        ["Function"] = function(callback)
+            if callback then
+	local part = Instance.new("Part", Workspace)
+            part.Name = "AntiVoid"
+            part.Size = Vector3.new(2100, 0.5, 2000)
+            part.Position = Vector3.new(160.5, 25, 247.5)
+            part.Transparency = 0.4
+            part.Anchored = true
+	    part.Color = Color3.fromRGB(111, 43, 150)
+            else               
+		game.Workspace.AntiVoid:Destroy()
+            end
+        end
+    })
+end)
