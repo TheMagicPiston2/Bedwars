@@ -1,0 +1,24 @@
+runcode(function()
+	local Multiaura = {["Enabled"] = false}
+	Multiaura = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+		["Name"] = "BetterKillAura",
+		["Function"] = function(callback)
+			if callback then
+				task.spawn(function()
+					repeat
+						task.wait(0.5)
+						if (GuiLibrary["ObjectsThatCanBeSaved"]["Lobby CheckToggle"]["Api"]["Enabled"] == false) and Multiaura["Enabled"] then
+							local plrs = GetAllNearestHumanoidToPosition(true, 17, 1, false)
+							for i,plr in pairs(plrs) do
+								local selfpos = entity.character.HumanoidRootPart.Position
+								local newpos = plr.RootPart.Position
+								bedwars["ClientHandler"]:Get(bedwars["PaintRemote"]):SendToServer(selfpos, CFrame.lookAt(selfpos, newpos).lookVector)
+							end
+						end
+					until not Multiaura["Enabled"]
+				end)
+			end
+		end,
+		["HoverText"] = "Use KillAura with this to make it better."
+	})
+end)
